@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+
+<body>
+	<nav th:replace="layout :: header"></nav>
+
+	<div class="container" id="main-content">
+		<div class="row d-flex justify-content-center">
+			<form style="min-width: 300px;" action="#"
+				th:action="@{/detailgoal/save}" th:object="${detailgoal}"
+				method="post" novalidate="novalidate">
+				<h5 class="text-center">KI4M</h5>
+
+
+				<div class="form-group">
+					<input class="form-control" type="text" placeholder="Contact name"
+						th:field="*{name_Detail}" th:errorclass="field-error" /> <em
+						th:if="${#fields.hasErrors('name_Detail')}" th:errors="*{name_Detail}"></em>
+				</div>
+
+				<div class="form-group">
+					<input class="form-control" type="date"
+						placeholder="start_Day" th:field="*{start_Day}"
+						th:errorclass="field-error" /> <em
+						th:if="${#fields.hasErrors('Start_Day')}" th:errors="*{start_Day}"></em>
+				</div>
+
+				<div class="form-group">
+					<input class="form-control" type="date"
+						placeholder="end_Day" th:field="*{end_Day}"
+						th:errorclass="field-error" /> <em
+						th:if="${#fields.hasErrors('end_Day')}" th:errors="*{end_Day}"></em>
+				</div>
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-block btn-primary">
+						<i class="fa fa-save"></i> Save
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- /.container -->
+
+	<footer th:replace="layout :: footer"></footer>
+</body>
+</html>
